@@ -1,21 +1,30 @@
 package HandsOn_Lab;
 //Wrapper Class Activity
 public class Student {
+	int exemption;
 double calculateFeesStructure (long sid,char sgrade,double mfees,boolean isscheligible,double fees) {
-	if(sid!=0&&sgrade=='A'&&isscheligible==true)
+	if(sid!=0&&sgrade=='A'&&isscheligible==true) {
 		fees=mfees -mfees *10/100 ;
-	else if(sid!=0&&sgrade=='B'&&isscheligible==true)
+		exemption=10;
+	}
+	else if(sid!=0&&sgrade=='B'&&isscheligible==true) {
 		fees=mfees -mfees *8/100 ;
-	else if(sid!=0&&sgrade=='C'&&isscheligible==true)
+		exemption=8;
+	}
+	else if(sid!=0&&sgrade=='C'&&isscheligible==true) {
 		fees=mfees -mfees *6/100 ;
-	else if(sid!=0&&sgrade=='D'&&isscheligible==true)
+		exemption=6;
+	}
+	else if(sid!=0&&sgrade=='D'&&isscheligible==true) {
 		fees=mfees -mfees *4/100 ;
+		exemption=4;
+	}
 	else
 		System.out.println("Not Elligible for Exemption");
 	return fees;
 }
 void compareMarks(double eng,long math) {
-	Double e=Double.valueOf(eng);
+	Double e=Double.valueOf(eng);//primtive to wrapper double type
 //	Integer m=(int)math.longValue();
 	Long m=Long.valueOf(math);
 	if(e>m)
@@ -34,7 +43,7 @@ void validateFees(double fees) {
 public static void main(String[] args) {
 	Student obj=new Student();
 	double fees=obj.calculateFeesStructure(234,'C',600, true, 0);
-	System.out.println(obj.calculateFeesStructure(234,'C',600, true, 0));
+	System.out.println(obj.exemption+"% of fees is exempted, the calculated fees is "+obj.calculateFeesStructure(234,'C',600, true, 0));
 	obj.compareMarks(85, 65);
 	obj.compareMarks(56, 98);
 	obj.validateFees(fees);
